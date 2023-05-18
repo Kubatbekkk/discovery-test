@@ -1,4 +1,4 @@
-### Discovery Studio Test Store
+### Discovery Studio Test Store  |  [Deploy](https://discovery-test.netlify.app/)
 
 - [x] Получить данные из файла data.json и вывести их на страницу как это показано на рис."пример.png".
 
