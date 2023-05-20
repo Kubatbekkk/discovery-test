@@ -1,4 +1,4 @@
-### Discovery Studio Test Store (версия 1, без рефакторинга) |  [Deploy](https://discovery-test.netlify.app/)
+### Discovery Studio Test Store (версия 1, без рефакторинга) |  [Deploy Demo](https://discovery-test.netlify.app/)
 ==========================================================
 <br/>
 Начало: 17.05.2023
