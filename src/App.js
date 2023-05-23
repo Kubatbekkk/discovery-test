@@ -102,7 +102,7 @@ export default function App() {
     );
 
   return (
-    <>
+    <div className="container">
       <Box sx={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
         <Typography align="center" sx={{ m: 4, fontWeight: 'bold' }}>
           Discovery Studio Test Store
@@ -135,6 +135,6 @@ export default function App() {
           />
         </Grid>
       </Grid>
-    </>
+    </div >
   );
 }

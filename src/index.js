@@ -8,8 +8,6 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <div className="container">
       <App />
-    </div>
   </StrictMode>
 );
