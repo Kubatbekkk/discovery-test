@@ -7,7 +7,7 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import './style.css';
 import { TextField } from '@mui/material';
-import { getProductsData, getProductsGroups } from './utils/fetchData';
+import { getProductsData } from './utils/fetchData';
 
 const dataApi = '/data.json'
 const namesApi = '/names.json'
@@ -57,8 +57,6 @@ export default function App() {
     );
     for (let { C: priceInUSD, G: groupId, T: productId, P: quantity } of data) {
       let priceChangeStatus = '';
-      let previousPriceInUSD =
-        grouppedProducts[groupId]?.products[productId]?.price?.USD;
       const priceInRUB = +(exchangeRates.RUB * priceInUSD).toFixed(2);
       const previousPriceInRUB =
         grouppedProducts[groupId]?.products[productId]?.price?.RUB;
@@ -99,9 +97,11 @@ export default function App() {
 
   if (loading)
     return (
+      <div className='container'>
       <Box className="app__loading">
         <CircularProgress />
       </Box>
+      </div>
     );
 
   return (
