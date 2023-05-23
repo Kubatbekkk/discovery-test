@@ -9,6 +9,9 @@ import './style.css';
 import { TextField } from '@mui/material';
 import { getProductsData, getProductsGroups } from './utils/fetchData';
 
+const dataApi = '/data.json'
+const namesApi = '/names.json'
+
 export default function App() {
   const [loading, setLoading] = useState(false);
   const [grouppedProducts, setGrouppedProducts] = useState({});
@@ -19,8 +22,8 @@ export default function App() {
   const getProducts = async () => {
     try {
       setLoading(true);
-      const data = await getProductsData();
-      const groups = await getProductsGroups();
+      const data = await getProductsData(dataApi);
+      const groups = await getProductsData(namesApi);
       const productsByGroups = setProductsByGroups({
         data: data.Value.Goods,
         groups,
