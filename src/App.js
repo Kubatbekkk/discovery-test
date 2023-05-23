@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import GoodsList from './components/GoodsList';
 import Cart from './components/Cart';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -17,7 +17,7 @@ export default function App() {
   const [grouppedProducts, setGrouppedProducts] = useState({});
   const [exchangeRates, setExchangeRates] = useState({ RUB: 60 });
   const [cartItems, setCartItems] = useState([]);
-  const exRef = useRef(null);
+  const [exchangeRateInput, setExchangeRateInput] = useState('');
 
   const getProducts = async () => {
     try {
@@ -84,16 +84,20 @@ export default function App() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const newExchangeRate = {
-        RUB: +exRef.current.value || exchangeRates.RUB,
+        RUB: +exchangeRateInput || exchangeRates.RUB,
       };
       setExchangeRates(newExchangeRate);
     }, 15000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [exchangeRateInput, exchangeRates]);
 
   useEffect(() => {
     getProducts();
   }, [exchangeRates]);
+
+  const handleExchangeRateInputChange = (event) => {
+    setExchangeRateInput(event.target.value);
+  };
 
   if (loading)
     return (
@@ -112,7 +116,8 @@ export default function App() {
         </Typography>
         <Typography>Exchange Rate: ₽ {exchangeRates.RUB}</Typography>
         <TextField
-          inputRef={exRef}
+          value={exchangeRateInput}
+          onChange={handleExchangeRateInputChange}
           type="number"
           size="small"
           sx={{ width: '200px' }}
